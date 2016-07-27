@@ -7,6 +7,10 @@ var request  = require('request');
 var app  = express();
 var port = process.env.PORT || 5000;
 
+app.use(function (req, res) {
+  res.send({ msg: "hello" });
+});
+
 var server = http.createServer(app);
 var serverOnPort = server.listen(port);
 
@@ -17,7 +21,11 @@ console.log("-- websocket server created");
 
 wss.on('connection', (ws) => {
   console.log('-- wss: Client connected');
-  ws.on('close', () => console.log('-- wss: Client disconnected'));
+
+  ws.on('close', function() { console.log('-- wss: Client disconnected'); });
+  ws.on('message', function(message) { console.log('-- wss: ' + message); });
+
+  ws.send('something');
 });
 
 setInterval(() => {
