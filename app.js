@@ -27,7 +27,6 @@ wss.on('connection', (ws) => {
 
   ws.on('close', function() {
     console.log('-- wss: Client disconnected');
-    ws.send('ping');
   });
 
   ws.on('message', function(message) {
@@ -42,6 +41,10 @@ wss.on('connection', (ws) => {
       }
     }
   });
-
-  ws.send('ping');
 });
+
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send('ping');
+  });
+}, 1000);

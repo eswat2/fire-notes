@@ -22,7 +22,6 @@
     var request = { type:'GET', id:'eswat2' };
     var message = JSON.stringify(request);
     var kount   = 0;
-    var MAX     = 5;
 
     function onOpen(evt) {
       writeToScreen("CONNECTED");
@@ -36,8 +35,10 @@
       if (evt.data == 'ping') {
         writeToScreen('<span style="color: green;">RESPONSE: ' + evt.data +'</span>');
         console.log(evt.data);
-        doSend('pong');
-        doSend(message);
+        kount = kount + 1;
+        if (kount == 2) {
+          doSend(message);
+        }
       }
       else {
         var data = JSON.parse(evt.data);
