@@ -21,10 +21,13 @@
     websocket.onerror = function(evt) { onError(evt) };
   }
 
+  var request = { type:'GET', id:'eswat2' };
+  var message = JSON.stringify(request);
+
   function onOpen(evt)
   {
     writeToScreen("CONNECTED");
-    doSend("WebSocket rocks");
+    doSend(message);
   }
 
   function onClose(evt)

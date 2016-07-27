@@ -22,14 +22,22 @@ console.log("-- websocket server created");
 wss.on('connection', (ws) => {
   console.log('-- wss: Client connected');
 
-  ws.on('close', function() { console.log('-- wss: Client disconnected'); });
-  ws.on('message', function(message) { console.log('-- wss: ' + message); });
+  ws.on('close', function() {
+    console.log('-- wss: Client disconnected');
+  });
 
-  ws.send('something');
+  ws.on('message', function(message) {
+    var obj = JSON.parse(message);
+    console.log('-- wss: ' + obj.type + ' ' + obj.id);
+  });
+
+  ws.send('ping');
 });
+
+var data = { id:'eswat2', values:['unicorn','ui coder']}
 
 setInterval(() => {
   wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
+    client.send(JSON.stringify(data);
   });
 }, 1000);
