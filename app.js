@@ -5,22 +5,71 @@ let fs       = require('fs');
 let request  = require('request');
 let notes    = require('./notes');
 
+let bodyParser = require('body-parser');
+let cors = require('cors');
+
 let app  = express();
 let port = process.env.PORT || 5000;
 
 let mock = {
-  wut:'a simple websocket notes server',
+  wut:'a simple websocket & REST api notes server',
   why:'wanted to build something like firebase',
   who:'Richard Hess (aka. eswat2)',
   app:'https://egghead-notes.herokuapp.com',
   git:'https://github.com/eswat2/fire-notes',
   wss:'wss://fire-notes.herokuapp.com',
   api:[
-    { type:'GET',  what:'fetch the note container for this key' },
-    { type:'KEYS', what:'list of keys' },
-    { type:'POST', what:'add a new note for this key' }
+    { url:'/keys',       verb:'GET',  what:'list of keys' },
+    { url:'/notes',      verb:'POST', what:'creates/updates a note container' },
+    { url:'/notes/:key', verb:'GET',  what:'fetch note container for this key' },
+    { wss: {
+      request: [ 'GET', 'KEYS', 'POST' ],
+      response:[ 'DATA', 'ping' ]
+    }}
   ]
 };
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+app.get('/keys', function (req, res, next) {
+  notes.keys((err, keys) => {
+    if (!err) {
+      res.json(keys);
+    }
+  });
+});
+
+app.get('/notes/:username', function (req, res, next) {
+  var user = req.params.username.toLowerCase();
+  if (user) {
+    notes.get(user, (err, object) => {
+      if (!err) {
+        if (object) {
+          res.json(object);
+        }
+        else {
+          res.json({ id:user, values:[] });
+        }
+      }
+    });
+  }
+});
+
+app.post('/notes', function (req, res, next) {
+  var user  = req.body.id.toLowerCase();
+  var value = req.body.values;
+  notes.post(user, value, (err, object) => {
+    if (!err) {
+      // NOTE:  push the update to the websocket clients before responding...
+      wss.clients.forEach((client) => {
+        client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
+      });
+      res.json(object);
+    }
+  });
+});
 
 app.use((req, res) => {
   res.send(mock);

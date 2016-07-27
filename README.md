@@ -1,8 +1,8 @@
 # fire-notes
 [![Dependency Status](https://dependencyci.com/github/eswat2/fire-notes/badge)](https://dependencyci.com/github/eswat2/fire-notes)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=faux-base&style=flat&svg=1)](https://fire-notes.herokuapp.com)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=fire-notes&style=flat&svg=1)](https://fire-notes.herokuapp.com)
 
-a simple [**WebSockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) notes server to support the Github Note Taker app from the egghead.io course...
+a simple [**WebSockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and **REST** api notes server to support the Github Note Taker app from the egghead.io course...
 
 ```
 npm install -g foreman
@@ -15,18 +15,26 @@ sh demon
 ### Features:
 
 - simple notes api built on [**mongoose**](http://mongoosejs.com/)
-- api uses [**ws**](https://github.com/websockets/ws)
+- exposed [**ws**](https://github.com/websockets/ws) api
+- exposed REST api that supports CORS
 - notes are persisted to [**mlab**](https://mlab.com/)
 - default response is JSON describing the server api
 
+### REST
+
+```
+- GET  /keys
+- GET  /notes/:username
+- POST /notes
+```
 
 ### Deployed:
 
-the server has been deployed and is running here:  [faux-base](https://faux-base.herokuapp.com/)
+the server has been deployed and is running here:  [**fire-notes**](https://fire-notes.herokuapp.com/)
 
 ```json
 {
-  "wut": "a simple websocket notes server",
+  "wut": "a simple websocket & REST api notes server",
   "why": "wanted to build something like firebase",
   "who": "Richard Hess (aka. eswat2)",
   "app": "https://egghead-notes.herokuapp.com",
@@ -34,16 +42,32 @@ the server has been deployed and is running here:  [faux-base](https://faux-base
   "wss": "wss://fire-notes.herokuapp.com",
   "api": [
     {
-      "type": "GET",
-      "what": "fetch the note container for this key"
-    },
-    {
-      "type": "KEYS",
+      "url": "/keys",
+      "verb": "GET",
       "what": "list of keys"
     },
     {
-      "type": "POST",
-      "what": "add a new note for this key"
+      "url": "/notes",
+      "verb": "POST",
+      "what": "creates/updates a note container"
+    },
+    {
+      "url": "/notes/:key",
+      "verb": "GET",
+      "what": "fetch note container for this key"
+    },
+    {
+      "wss": {
+        "request": [
+          "GET",
+          "KEYS",
+          "POST"
+        ],
+        "response": [
+          "DATA",
+          "ping"
+        ]
+      }
     }
   ]
 }
