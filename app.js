@@ -30,12 +30,15 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('message', function(message) {
-    var obj = JSON.parse(message);
-    console.log('-- wss: ' + obj.type + ' ' + obj.id);
-    if (obj.type == 'GET') {
-      ws.send(message);
+    if (message == 'ping') {
+      ws.send('pong');
+    }
+    else {
+      var obj = JSON.parse(message);
+      console.log('-- wss: ' + obj.type + ' ' + obj.id);
+      if (obj.type == 'GET') {
+        ws.send(message);
+      }
     }
   });
-
-  ws.send('ping');
 });
