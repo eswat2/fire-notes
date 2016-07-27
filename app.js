@@ -16,9 +16,9 @@ let mock = {
   git:'https://github.com/eswat2/fire-notes',
   wss:'wss://fire-notes.herokuapp.com',
   api:[
-    { type:'GET',  what:'list of keys' },
-    { type:'POST', what:'add a new note for this key' },
-    { type:'KEYS', what:'fetch the note container for this key' }
+    { type:'GET',  what:'fetch the note container for this key' },
+    { type:'KEYS', what:'list of keys' },
+    { type:'POST', what:'add a new note for this key' }
   ]
 };
 
