@@ -30,8 +30,8 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('message', function(message) {
-    if (message == 'ping') {
-      ws.send('pong');
+    if (message == 'pong') {
+      console.log('-- wss: pong');
     }
     else {
       var obj = JSON.parse(message);
@@ -41,4 +41,6 @@ wss.on('connection', (ws) => {
       }
     }
   });
+
+  ws.send('ping');
 });

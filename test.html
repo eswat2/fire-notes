@@ -26,7 +26,6 @@
 
     function onOpen(evt) {
       writeToScreen("CONNECTED");
-      doSend('ping');
     }
 
     function onClose(evt) {
@@ -37,6 +36,7 @@
       if (evt.data == 'ping') {
         writeToScreen('<span style="color: green;">RESPONSE: ' + evt.data +'</span>');
         console.log(evt.data);
+        doSend('pong');
         doSend(message);
       }
       else {
