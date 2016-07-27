@@ -33,16 +33,19 @@
 
     function onMessage(evt) {
       if (evt.data == 'ping') {
-        writeToScreen('<span style="color: green;">RESPONSE: ' + evt.data +'</span>');
+        writeToScreen('<span style="color: green;">RESPONSE: ping</span>');
         console.log(evt.data);
         kount = kount + 1;
         if (kount == 2) {
           doSend(message);
         }
+        if (kount > 10) {
+          websocket.close();
+        }
       }
       else {
         var data = JSON.parse(evt.data);
-        writeToScreen('<span style="color: blue;">RESPONSE: ' + data.id +'</span>');
+        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data +'</span>');
         console.log(data);
       }
     }

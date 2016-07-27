@@ -37,7 +37,7 @@ wss.on('connection', (ws) => {
       var obj = JSON.parse(message);
       console.log('-- wss: ' + obj.type + ' ' + obj.id);
       if (obj.type == 'GET') {
-        ws.send(message);
+        ws.send(msg);
       }
     }
   });
