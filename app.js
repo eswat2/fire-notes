@@ -94,7 +94,7 @@ wss.on('connection', (ws) => {
         Note.find({}, function(err, list) {
           if (!err) {
             var keys = list.map(function(item) { return item.user; }).sort();
-            ws.send(JSON.stringify({ type:'KEYS', keys:keys));
+            ws.send(JSON.stringify({ type:'KEYS', keys:keys }));
           }
         });
       }
@@ -102,7 +102,7 @@ wss.on('connection', (ws) => {
         postNote(obj.id, obj.value, function(err, object) {
           if (!err) {
             wss.clients.forEach((client) => {
-              client.send({ type:'DATA', id:object.id, values:object.values });
+              client.send(JSON.stringify({ type:'DATA', id:object.id, values:object.values }));
             });
           }
         });
