@@ -9,11 +9,9 @@ let Note = mongoose.model('Note', noteSchema);
 let db   = null;
 
 let connectDB = (uri) => {
-  var options = { promiseLibrary: require('bluebird') };
+  mongoose.connect(uri);
 
-  mongoose.Promise = require('bluebird');
-
-  db = mongoose.createConnection(uri, options);
+  db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
     // we're connected!
