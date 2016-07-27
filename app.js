@@ -14,3 +14,14 @@ console.log("-- Notes Server listening on port " + port);
 
 var wss = new wsServer({ server: serverOnPort });
 console.log("-- websocket server created");
+
+wss.on('connection', (ws) => {
+  console.log('-- wss: Client connected');
+  ws.on('close', () => console.log('-- wss: Client disconnected'));
+});
+
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
+  });
+}, 1000);
