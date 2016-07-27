@@ -1,0 +1,32 @@
+{
+  "name": "fire-notes",
+  "version": "1.0.0",
+  "description": "a simple websocket based notes server...",
+  "engines": {
+    "node": "6.3.0",
+    "npm": "3.10.5"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Hess eswat2@gmail.com (https://about.me/richardhess)",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.5.5",
+    "request": "^2.74.0",
+    "ws": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eswat2/fire-notes"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "websockets"
+  ],
+  "license": "MIT"
+}
