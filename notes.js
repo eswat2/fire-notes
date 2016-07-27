@@ -8,10 +8,12 @@ let noteSchema = mongoose.Schema({
 let Note = mongoose.model('Note', noteSchema);
 let db   = null;
 
-let connectDB = (MONGOLAB_URI) => {
-  mongoose.connect(MONGOLAB_URI);
+let connectDB = (uri) => {
+  var options = { promiseLibrary: require('bluebird') };
 
-  db = mongoose.connection;
+  mongoose.Promise = require('bluebird');
+
+  db = mongoose.createConnection(uri, options);
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
     // we're connected!
