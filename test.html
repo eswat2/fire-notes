@@ -23,6 +23,8 @@
 
   var request = { type:'GET', id:'eswat2' };
   var message = JSON.stringify(request);
+  var kount   = 0;
+  var MAX     = 10;
 
   function onOpen(evt)
   {
@@ -38,7 +40,10 @@
   function onMessage(evt)
   {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-    // websocket.close();
+    kount = kount + 1;
+    if (kount > MAX) {
+      websocket.close();
+    }
   }
 
   function onError(evt)

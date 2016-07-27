@@ -34,10 +34,11 @@ wss.on('connection', (ws) => {
   ws.send('ping');
 });
 
-var data = { id:'eswat2', values:['unicorn','ui coder']}
+var data = { id:'eswat2', values:['unicorn','ui coder']};
+var msg  = JSON.stringify(data);
 
 setInterval(() => {
   wss.clients.forEach((client) => {
-    client.send(JSON.stringify(data);
+    client.send(msg);
   });
 }, 1000);
