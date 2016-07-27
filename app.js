@@ -42,7 +42,7 @@ app.get('/keys', function (req, res, next) {
 });
 
 app.get('/notes/:username', function (req, res, next) {
-  var user = req.params.username.toLowerCase();
+  let user = req.params.username.toLowerCase();
   if (user) {
     notes.get(user, (err, object) => {
       if (!err) {
@@ -58,8 +58,8 @@ app.get('/notes/:username', function (req, res, next) {
 });
 
 app.post('/notes', function (req, res, next) {
-  var user  = req.body.id.toLowerCase();
-  var value = req.body.values;
+  let user  = req.body.id.toLowerCase();
+  let value = req.body.values;
   notes.post(user, value, (err, object) => {
     if (!err) {
       // NOTE:  push the update to the websocket clients before responding...
@@ -97,16 +97,17 @@ wss.on('connection', (ws) => {
       console.log('-- wss: pong');
     }
     else {
-      let obj = JSON.parse(message);
-      console.log('-- wss: ' + obj.type + ' ' + obj.id);
+      let obj  = JSON.parse(message);
+      let user = obj.id.toLowerCase();
+      console.log('-- wss: ' + obj.type + ' ' + user);
       if (obj.type == 'GET') {
-        notes.get(obj.id, (err, object) => {
+        notes.get(user, (err, object) => {
           if (!err) {
             if (object) {
               ws.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
             }
             else {
-              ws.send(JSON.stringify({ type:'DATA', id:obj.id, values:[] }));
+              ws.send(JSON.stringify({ type:'DATA', id:user, values:[] }));
             }
           }
         });
@@ -119,7 +120,7 @@ wss.on('connection', (ws) => {
         });
       }
       if (obj.type == 'POST') {
-        notes.post(obj.id, obj.value, (err, object) => {
+        notes.post(user, obj.value, (err, object) => {
           if (!err) {
             wss.clients.forEach((client) => {
               client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));

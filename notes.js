@@ -29,13 +29,16 @@ let getKeys = (callback) => {
 }
 
 let getNote = (user, callback) => {
-  Note.findOne({ user: user }, callback);
+  let key = user.toLowerCase();
+
+  Note.findOne({ user: key }, callback);
 };
 
 let postNote = (user, value, callback) => {
   let note = null;
+  let key = user.toLowerCase();
 
-  getNote(user, function(err, object) {
+  getNote(key, function(err, object) {
     if (!err) {
       if (object) {
         note = object;
@@ -43,7 +46,7 @@ let postNote = (user, value, callback) => {
         note.values.push(value);
       }
       else {
-        note = new Note({ user: user, values: [ value ] });
+        note = new Note({ user: key, values: [ value ] });
       }
       note.save(callback);
     }
