@@ -1,13 +1,14 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var noteSchema = mongoose.Schema({
+let noteSchema = mongoose.Schema({
     user: String,
     values: [ String ]
 });
 
-var Note = mongoose.model('Note', noteSchema);
+let Note = mongoose.model('Note', noteSchema);
+let db   = null;
 
-function connectDB(MONGOLAB_URI) {
+let connectDB = (MONGOLAB_URI) => {
   mongoose.connect(MONGOLAB_URI);
 
   db = mongoose.connection;
@@ -18,21 +19,21 @@ function connectDB(MONGOLAB_URI) {
   });
 };
 
-function getKeys(callback) {
+let getKeys = (callback) => {
   Note.find({}, function(err, list) {
     if (!err) {
-      var keys = list.map(function(item) { return item.user; }).sort();
+      let keys = list.map(function(item) { return item.user; }).sort();
       callback(null, keys);
     }
   });
 }
 
-function getNote(user, callback) {
+let getNote = (user, callback) => {
   Note.findOne({ user: user }, callback);
 };
 
-function postNote(user, value, callback) {
-  var note = null;
+let postNote = (user, value, callback) => {
+  let note = null;
 
   getNote(user, function(err, object) {
     if (!err) {
@@ -55,7 +56,7 @@ function postNote(user, value, callback) {
 // NOTE:  the callback needs to be in this form - function(error, data)
 //
 //
-var api = {
+let api = {
   connect: connectDB,
   keys: getKeys,
   get: getNote,

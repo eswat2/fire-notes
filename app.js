@@ -1,47 +1,57 @@
-var wsServer = require("ws").Server
-var express  = require('express');
-var http     = require('http');
-var fs       = require('fs');
-var request  = require('request');
-var notes    = require('./notes');
+let wsServer = require("ws").Server
+let express  = require('express');
+let http     = require('http');
+let fs       = require('fs');
+let request  = require('request');
+let notes    = require('./notes');
 
-var app  = express();
-var port = process.env.PORT || 5000;
-var db   = null;
+let app  = express();
+let port = process.env.PORT || 5000;
 
-app.use(function (req, res) {
-  res.send({ msg: "hello" });
+let mock = {
+  wut:'a simple websocket notes server',
+  why:'wanted to build something like firebase',
+  who:'Richard Hess (aka. eswat2)',
+  app:'https://egghead-notes.herokuapp.com',
+  git:'https://github.com/eswat2/fire-notes',
+  wss:'wss://fire-notes.herokuapp.com',
+  api:[
+    { type:'GET',  what:'list of keys' },
+    { type:'POST', what:'add a new note for this key' },
+    { type:'KEYS', what:'fetch the note container for this key' }
+  ]
+};
+
+app.use((req, res) => {
+  res.send(mock);
 });
 
-var server = http.createServer(app);
-var serverOnPort = server.listen(port);
+let server = http.createServer(app);
+let serverOnPort = server.listen(port);
 
 console.log("-- Notes Server listening on port " + port);
 
 notes.connect(process.env.MONGODB_URI);
 
-var wss = new wsServer({ server: serverOnPort });
+let wss = new wsServer({ server: serverOnPort });
 console.log("-- websocket server created");
-
-var data = { id:'eswat2', type:'NOTES', values:['unicorn','ui coder']};
-var msg  = JSON.stringify(data);
 
 wss.on('connection', (ws) => {
   console.log('-- wss: Client connected');
 
-  ws.on('close', function() {
+  ws.on('close', () => {
     console.log('-- wss: Client disconnected');
   });
 
-  ws.on('message', function(message) {
+  ws.on('message', (message) => {
     if (message == 'pong') {
       console.log('-- wss: pong');
     }
     else {
-      var obj = JSON.parse(message);
+      let obj = JSON.parse(message);
       console.log('-- wss: ' + obj.type + ' ' + obj.id);
       if (obj.type == 'GET') {
-        notes.get(obj.id, function(err, object) {
+        notes.get(obj.id, (err, object) => {
           if (!err) {
             if (object) {
               ws.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
@@ -53,14 +63,14 @@ wss.on('connection', (ws) => {
         });
       }
       if (obj.type == 'KEYS') {
-        notes.keys(function(err, keys) {
+        notes.keys((err, keys) => {
           if (!err) {
             ws.send(JSON.stringify({ type:'KEYS', keys:keys }));
           }
         });
       }
       if (obj.type == 'POST') {
-        notes.post(obj.id, obj.value, function(err, object) {
+        notes.post(obj.id, obj.value, (err, object) => {
           if (!err) {
             wss.clients.forEach((client) => {
               client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
