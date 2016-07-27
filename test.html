@@ -4,6 +4,7 @@
   <script language="javascript" type="text/javascript">
 
     var wsUri = "wss://fire-notes.herokuapp.com/";
+    // var wsUri = "ws://localhost:5000/";
     var output;
 
     function init() {
@@ -19,8 +20,9 @@
       websocket.onerror = function(evt) { onError(evt) };
     }
 
-    var request = { type:'GET', id:'eswat2' };
-    var message = JSON.stringify(request);
+    var get     = JSON.stringify({ type:'GET', id:'eswat2' });
+    var post    = JSON.stringify({ type:'POST', id:'eswat2', value:'unicorn' });
+    var keys    = JSON.stringify({ type:'KEYS' });
     var kount   = 0;
 
     function onOpen(evt) {
@@ -37,7 +39,8 @@
         console.log(evt.data);
         kount = kount + 1;
         if (kount == 2) {
-          doSend(message);
+          doSend(get);
+          doSend(keys);
         }
         if (kount > 10) {
           websocket.close();

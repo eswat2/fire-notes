@@ -3,7 +3,7 @@ var express  = require('express');
 var http     = require('http');
 var fs       = require('fs');
 var request  = require('request');
-var mongoose = require('mongoose');
+var notes    = require('./notes');
 
 var app  = express();
 var port = process.env.PORT || 5000;
@@ -18,50 +18,7 @@ var serverOnPort = server.listen(port);
 
 console.log("-- Notes Server listening on port " + port);
 
-var noteSchema = mongoose.Schema({
-    user: String,
-    values: [ String ]
-});
-
-var Note = mongoose.model('Note', noteSchema);
-
-function connectDB(MONGOLAB_URI) {
-  mongoose.connect(MONGOLAB_URI);
-
-  db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function() {
-    // we're connected!
-    console.log('-- mongoLab:  connected');
-  });
-};
-
-function getNote(user, callback) {
-  Note.findOne({ user: user }, callback);
-};
-
-function postNote(user, value, callback) {
-  var note = null;
-
-  getNote(user, function(err, object) {
-    if (!err) {
-      if (object) {
-        note = object;
-
-        note.values.push(value);
-      }
-      else {
-        note = new Note({ user: user, values: [ value ] });
-      }
-      note.save(callback);
-    }
-    else {
-      callback('failed');
-    }
-  });
-};
-
-connectDB(process.env.MONGODB_URI);
+notes.connect(process.env.MONGODB_URI);
 
 var wss = new wsServer({ server: serverOnPort });
 console.log("-- websocket server created");
@@ -84,25 +41,29 @@ wss.on('connection', (ws) => {
       var obj = JSON.parse(message);
       console.log('-- wss: ' + obj.type + ' ' + obj.id);
       if (obj.type == 'GET') {
-        getNote(obj.id, function(err, object) {
+        notes.get(obj.id, function(err, object) {
           if (!err) {
-            ws.send(JSON.stringify({ type:'DATA', id:object.id, values:object.values }));
+            if (object) {
+              ws.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
+            }
+            else {
+              ws.send(JSON.stringify({ type:'DATA', id:obj.id, values:[] }));
+            }
           }
         });
       }
       if (obj.type == 'KEYS') {
-        Note.find({}, function(err, list) {
+        notes.keys(function(err, keys) {
           if (!err) {
-            var keys = list.map(function(item) { return item.user; }).sort();
             ws.send(JSON.stringify({ type:'KEYS', keys:keys }));
           }
         });
       }
       if (obj.type == 'POST') {
-        postNote(obj.id, obj.value, function(err, object) {
+        notes.post(obj.id, obj.value, function(err, object) {
           if (!err) {
             wss.clients.forEach((client) => {
-              client.send(JSON.stringify({ type:'DATA', id:object.id, values:object.values }));
+              client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
             });
           }
         });
