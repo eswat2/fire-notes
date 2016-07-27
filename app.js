@@ -19,6 +19,9 @@ console.log("-- Notes Server listening on port " + port);
 var wss = new wsServer({ server: serverOnPort });
 console.log("-- websocket server created");
 
+var data = { id:'eswat2', values:['unicorn','ui coder']};
+var msg  = JSON.stringify(data);
+
 wss.on('connection', (ws) => {
   console.log('-- wss: Client connected');
 
@@ -29,16 +32,10 @@ wss.on('connection', (ws) => {
   ws.on('message', function(message) {
     var obj = JSON.parse(message);
     console.log('-- wss: ' + obj.type + ' ' + obj.id);
+    if (obj.type == 'GET') {
+      ws.send(message);
+    }
   });
 
   ws.send('ping');
 });
-
-var data = { id:'eswat2', values:['unicorn','ui coder']};
-var msg  = JSON.stringify(data);
-
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send(msg);
-  });
-}, 1000);

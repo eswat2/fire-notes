@@ -3,72 +3,70 @@
   <title>WebSocket Test</title>
   <script language="javascript" type="text/javascript">
 
-  var wsUri = "wss://fire-notes.herokuapp.com/";
-  var output;
+    var wsUri = "wss://fire-notes.herokuapp.com/";
+    var output;
 
-  function init()
-  {
-    output = document.getElementById("output");
-    testWebSocket();
-  }
-
-  function testWebSocket()
-  {
-    websocket = new WebSocket(wsUri);
-    websocket.onopen = function(evt) { onOpen(evt) };
-    websocket.onclose = function(evt) { onClose(evt) };
-    websocket.onmessage = function(evt) { onMessage(evt) };
-    websocket.onerror = function(evt) { onError(evt) };
-  }
-
-  var request = { type:'GET', id:'eswat2' };
-  var message = JSON.stringify(request);
-  var kount   = 0;
-  var MAX     = 10;
-
-  function onOpen(evt)
-  {
-    writeToScreen("CONNECTED");
-    doSend(message);
-  }
-
-  function onClose(evt)
-  {
-    writeToScreen("DISCONNECTED");
-  }
-
-  function onMessage(evt)
-  {
-    writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-    kount = kount + 1;
-    if (kount > MAX) {
-      websocket.close();
+    function init()
+    {
+      output = document.getElementById("output");
+      testWebSocket();
     }
-  }
 
-  function onError(evt)
-  {
-    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
-  }
+    function testWebSocket()
+    {
+      websocket = new WebSocket(wsUri);
+      websocket.onopen = function(evt) { onOpen(evt) };
+      websocket.onclose = function(evt) { onClose(evt) };
+      websocket.onmessage = function(evt) { onMessage(evt) };
+      websocket.onerror = function(evt) { onError(evt) };
+    }
 
-  function doSend(message)
-  {
-    writeToScreen("SENT: " + message);
-    websocket.send(message);
-  }
+    var request = { type:'GET', id:'eswat2' };
+    var message = JSON.stringify(request);
+    var kount   = 0;
+    var MAX     = 5;
 
-  function writeToScreen(message)
-  {
-    var pre = document.createElement("p");
-    pre.style.wordWrap = "break-word";
-    pre.innerHTML = message;
-    output.appendChild(pre);
-  }
+    function onOpen(evt) {
+      writeToScreen("CONNECTED");
+      doSend(message);
+    }
 
-  window.addEventListener("load", init, false);
+    function onClose(evt) {
+      writeToScreen("DISCONNECTED");
+    }
+
+    function onMessage(evt) {
+      var data = evt.data == 'ping'? evt.data : JSON.parse(evt.data);
+      writeToScreen('<span style="color: blue;">RESPONSE: ' + data.id +'</span>');
+      console.log(data);
+      kount = kount + 1;
+      if (kount > MAX) {
+        websocket.close();
+      }
+    }
+
+    function onError(evt) {
+      writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    }
+
+    function doSend(message) {
+      writeToScreen("SENT: " + message);
+      websocket.send(message);
+    }
+
+    function writeToScreen(message) {
+      var pre = document.createElement("p");
+      pre.style.wordWrap = "break-word";
+      pre.innerHTML = message;
+      output.appendChild(pre);
+    }
+
+    window.addEventListener("load", init, false);
 
   </script>
+  <body>
+    <h2>WebSocket Test</h2>
 
-  <h2>WebSocket Test</h2>
-
-  <div id="output"></div>
+    <div id="output"></div>
+  </body>
+</html>
