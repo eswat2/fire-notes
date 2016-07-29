@@ -66,6 +66,16 @@ app.post('/notes', function (req, res, next) {
       wss.clients.forEach((client) => {
         client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
       });
+      // NOTE:  if this is a new object, update the clients...
+      if (object.values.length == 1) {
+        notes.keys((err, keys) => {
+          if (!err) {
+            wss.clients.forEach((client) => {
+              client.send(JSON.stringify({ type:'KEYS', keys:keys }));
+            });
+          }
+        });
+      }
       res.json(object);
     }
   });
@@ -125,6 +135,16 @@ wss.on('connection', (ws) => {
             wss.clients.forEach((client) => {
               client.send(JSON.stringify({ type:'DATA', id:object.user, values:object.values }));
             });
+            // NOTE:  if this is a new object, update the clients...
+            if (object.values.length == 1) {
+              notes.keys((err, keys) => {
+                if (!err) {
+                  wss.clients.forEach((client) => {
+                    client.send(JSON.stringify({ type:'KEYS', keys:keys }));
+                  });
+                }
+              });
+            }
           }
         });
       }
