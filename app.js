@@ -98,7 +98,7 @@ wss.on('connection', (ws) => {
     }
     else {
       let obj  = JSON.parse(message);
-      let user = obj.id.toLowerCase();
+      let user = obj.id ? obj.id.toLowerCase() : null;
       console.log('-- wss: ' + obj.type + ' ' + user);
       if (obj.type == 'GET') {
         notes.get(user, (err, object) => {
