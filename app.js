@@ -24,7 +24,7 @@ let mock = {
     { url:'/notes/:key', verb:'GET',  what:'fetch note container for this key' },
     { wss: {
       request: [ 'GET', 'KEYS', 'POST' ],
-      response:[ 'DATA', 'ping' ]
+      response:[ 'DATA', 'KEYS', 'ping' ]
     }}
   ]
 };
