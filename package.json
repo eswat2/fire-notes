@@ -14,9 +14,9 @@
   "author": "Richard Hess eswat2@gmail.com (https://about.me/richardhess)",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "cors": "^2.7.1",
+    "cors": "^2.8.0",
     "express": "^4.14.0",
-    "mongoose": "^4.5.9",
+    "mongoose": "^4.5.10",
     "request": "^2.74.0",
     "ws": "^1.1.1"
   },
