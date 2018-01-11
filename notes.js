@@ -9,7 +9,7 @@ let Note = mongoose.model('Note', noteSchema);
 let db   = null;
 
 let connectDB = (uri) => {
-  mongoose.connect(uri);
+  mongoose.connect(uri, { useMongoClient: true });
 
   db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));

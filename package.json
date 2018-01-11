@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "a simple websocket based notes server...",
   "engines": {
-    "node": "8.1.4",
-    "npm": "5.2.0"
+    "node": "9.4.0",
+    "npm": "5.6.0"
   },
   "main": "app.js",
   "scripts": {
@@ -13,12 +13,12 @@
   },
   "author": "Richard Hess eswat2@gmail.com (https://about.me/richardhess)",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "cors": "^2.8.0",
-    "express": "^4.14.0",
-    "mongoose": "^4.5.10",
-    "request": "^2.74.0",
-    "ws": "^1.1.1"
+    "body-parser": "1.18.2",
+    "cors": "2.8.4",
+    "express": "4.16.2",
+    "mongoose": "4.13.9",
+    "request": "2.83.0",
+    "ws": "4.0.0"
   },
   "repository": {
     "type": "git",
