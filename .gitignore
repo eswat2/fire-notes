@@ -1,6 +1,7 @@
 .DS_Store
 .env
 dist
+eslint.html
 
 # Logs
 logs
