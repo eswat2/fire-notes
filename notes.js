@@ -11,7 +11,7 @@ const Note = mongoose.model('Note', noteSchema)
 let db   = null
 
 const connectDB = (uri) => {
-  mongoose.connect(uri, { useMongoClient: true })
+  mongoose.connect(uri, { useNewUrlParser: true })
 
   db = mongoose.connection
   db.on('error', console.error.bind(console, 'connection error:'))

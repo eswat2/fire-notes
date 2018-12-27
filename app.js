@@ -9,6 +9,7 @@ const cors = require('cors')
 
 const app  = express()
 const port = process.env.PORT || 5000
+const muri = process.env.MONGODB_URI || 'mongodb://localhost/egghead-mobx'
 
 const mock = {
   wut: 'a simple websocket & REST api notes server',
@@ -33,7 +34,7 @@ const serverOnPort = server.listen(port)
 
 console.log('-- Notes Server listening on port ' + port)
 
-notes.connect(process.env.MONGODB_URI)
+notes.connect(muri)
 
 const wss = new WsServer({ server: serverOnPort })
 console.log('-- websocket server created')
