@@ -30,18 +30,18 @@
     "eslint-find-rules": "3.3.1",
     "eslint-formatter-pretty": "2.1.1",
     "eslint-loader": "2.1.2",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-watch": "5.0.1",
-    "husky": "1.3.1",
-    "lint-staged": "8.1.5"
+    "eslint-plugin-import": "2.17.2",
+    "eslint-watch": "5.1.2",
+    "husky": "2.3.0",
+    "lint-staged": "8.1.7"
   },
   "dependencies": {
-    "body-parser": "1.18.3",
+    "body-parser": "1.19.0",
     "cors": "2.8.5",
-    "express": "4.16.4",
-    "mongoose": "5.5.1",
+    "express": "4.17.0",
+    "mongoose": "5.5.10",
     "request": "2.88.0",
-    "ws": "6.2.1"
+    "ws": "7.0.0"
   },
   "repository": {
     "type": "git",
