@@ -14,7 +14,6 @@
     "fix": "eslint *.js --fix",
     "lintr": "esw *.js --color",
     "watch": "npm run lintr -- --watch",
-    "precommit": "lint-staged",
     "report": "eslint *.js -f html > eslint.html"
   },
   "lint-staged": {
@@ -54,5 +53,10 @@
     "express",
     "websockets"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
