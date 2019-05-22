@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000
 const muri = process.env.MONGODB_URI || 'mongodb://localhost/egghead-mobx'
 
 const mock = {
-  wut: 'a simple websocket & REST api notes server',
+  what: 'a simple websocket & REST api notes server',
   why: 'wanted to build something like firebase',
   who: 'Richard Hess (aka. eswat2)',
   app: 'https://egghead-notes.herokuapp.com',
