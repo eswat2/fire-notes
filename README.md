@@ -1,5 +1,5 @@
 # fire-notes
-[![Dependency Status](https://dependencyci.com/github/eswat2/fire-notes/badge)](https://dependencyci.com/github/eswat2/fire-notes)
+
 [![Heroku](https://heroku-badge.herokuapp.com/?app=fire-notes&style=flat&svg=1)](https://fire-notes.herokuapp.com)
 
 a simple [**WebSockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and **REST** api notes server to support the Github Note Taker app from the egghead.io course...
