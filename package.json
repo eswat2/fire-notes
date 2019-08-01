@@ -14,7 +14,8 @@
     "fix": "eslint *.js --fix",
     "lintr": "esw *.js --color",
     "watch": "npm run lintr -- --watch",
-    "report": "eslint *.js -f html > eslint.html"
+    "report": "eslint *.js -f html > eslint.html",
+    "deploy": "git push heroku master"
   },
   "lint-staged": {
     "*.js": [
@@ -32,7 +33,7 @@
     "eslint-loader": "2.2.1",
     "eslint-plugin-import": "2.18.2",
     "eslint-watch": "6.0.0",
-    "husky": "3.0.1",
+    "husky": "3.0.2",
     "lint-staged": "9.2.1"
   },
   "dependencies": {
