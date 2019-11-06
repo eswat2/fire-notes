@@ -15,7 +15,8 @@
     "lintr": "esw *.js --color",
     "watch": "npm run lintr -- --watch",
     "report": "eslint *.js -f html > eslint.html",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "open": "open https://fire-notes.herokuapp.com"
   },
   "lint-staged": {
     "*.js": [
