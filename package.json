@@ -30,7 +30,7 @@
     "babel-eslint": "10.0.3",
     "eslint": "6.6.0",
     "eslint-find-rules": "3.4.0",
-    "eslint-formatter-pretty": "3.0.0",
+    "eslint-formatter-pretty": "3.0.1",
     "eslint-loader": "3.0.2",
     "eslint-plugin-import": "2.18.2",
     "eslint-watch": "6.0.1",
@@ -42,7 +42,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "mem": "6.0.0",
-    "mongoose": "5.7.11",
+    "mongoose": "5.7.12",
     "request": "2.88.0",
     "ws": "7.2.0"
   },
