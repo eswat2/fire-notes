@@ -28,7 +28,7 @@
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-eslint": "10.0.3",
-    "eslint": "6.7.2",
+    "eslint": "6.8.0",
     "eslint-find-rules": "3.4.0",
     "eslint-formatter-pretty": "3.0.1",
     "eslint-loader": "3.0.3",
@@ -42,7 +42,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "mem": "6.0.1",
-    "mongoose": "5.8.1",
+    "mongoose": "5.8.2",
     "request": "2.88.0",
     "ws": "7.2.1"
   },
