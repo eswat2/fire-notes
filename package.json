@@ -2,11 +2,6 @@
   "name": "fire-notes",
   "version": "1.0.0",
   "description": "a simple websocket based notes server...",
-  "engineStrict": true,
-  "engines": {
-    "node": "12.13.0",
-    "npm": "6.12.0"
-  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -34,7 +29,7 @@
     "eslint-loader": "3.0.3",
     "eslint-plugin-import": "2.19.1",
     "eslint-watch": "6.0.1",
-    "husky": "4.0.0",
+    "husky": "4.0.1",
     "lint-staged": "9.5.0"
   },
   "dependencies": {
