@@ -15,8 +15,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "author": "Richard Hess eswat2@gmail.com (https://about.me/richardhess)",
