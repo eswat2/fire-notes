@@ -26,10 +26,10 @@
     "eslint-find-rules": "3.4.0",
     "eslint-formatter-pretty": "3.0.1",
     "eslint-loader": "3.0.3",
-    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-import": "2.20.2",
     "eslint-watch": "6.0.1",
     "husky": "4.2.3",
-    "lint-staged": "10.0.9"
+    "lint-staged": "10.1.0"
   },
   "dependencies": {
     "body-parser": "1.19.0",
