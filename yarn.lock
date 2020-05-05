@@ -1042,9 +1042,9 @@ eslint-plugin-import@2.20.2:
     resolve "^1.12.0"
 
 eslint-rule-docs@^1.1.5:
-  version "1.1.188"
-  resolved "https://registry.yarnpkg.com/eslint-rule-docs/-/eslint-rule-docs-1.1.188.tgz#0bd596ce7b506a59ff50fa21d66a3ed92d3b92d7"
-  integrity sha512-fNlK5bAgbRlR3ddetZ9wfLrVtFkAawg/mVIv6+CekwEGxaKDF7myWDFpxGhumkQmrl+TpSOMAhUPw+/TNT6A+Q==
+  version "1.1.189"
+  resolved "https://registry.yarnpkg.com/eslint-rule-docs/-/eslint-rule-docs-1.1.189.tgz#56b4bdf223774dc66c412365e6ba0017d297a9c5"
+  integrity sha512-26nV3Ef6J9xUjQhTjnUlB628AEXuQcRvXzUSQz04tTm1TSIUyBe2XaI8ODDxK68/42QifDBbdNuMFBtcHNDmGQ==
 
 eslint-rule-documentation@^1.0.0:
   version "1.0.23"
@@ -2199,10 +2199,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@5.9.11:
-  version "5.9.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.11.tgz#12464f557019ab1fe5d0fdcc342cab0e52adb172"
-  integrity sha512-xsPquUEBfJQ/ufT7SI4+qWHml1+HTNra5jQS0RsgCXIMMltCWxn3jeugLiPbyFkKZokMZ+tPy5yEDtLZu5gHeg==
+mongoose@5.9.12:
+  version "5.9.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.12.tgz#fb045740ae9adc36e1522ee9084792f7d62809be"
+  integrity sha512-bP01WSvh64yuHJ7XsGRwj/91j1V3iE3PcvYI6fAhMmNU9SBMHoMf/jy7hZm275zfocFiyTV9MfKLWrXh7VK9ig==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
