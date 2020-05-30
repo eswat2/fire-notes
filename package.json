@@ -29,7 +29,7 @@
     "eslint-plugin-import": "2.20.2",
     "eslint-watch": "7.0.0",
     "husky": "4.2.5",
-    "lint-staged": "10.2.6"
+    "lint-staged": "10.2.7"
   },
   "dependencies": {
     "body-parser": "1.19.0",
