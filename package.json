@@ -28,7 +28,7 @@
     "eslint-loader": "4.0.2",
     "eslint-plugin-import": "2.22.1",
     "eslint-watch": "7.0.0",
-    "husky": "4.3.4",
+    "husky": "4.3.5",
     "lint-staged": "10.5.3"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "mem": "8.0.0",
-    "mongoose": "5.11.4",
+    "mongoose": "5.11.5",
     "request": "2.88.2",
     "ws": "7.4.1"
   },
