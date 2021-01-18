@@ -1,6 +1,6 @@
 {
   "name": "fire-notes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a simple websocket based notes server...",
   "main": "app.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "lintr": "esw *.js --color",
     "watch": "npm run lintr -- --watch",
     "report": "eslint *.js -f html > eslint.html",
+    "predeploy": "yarn version --patch",
     "deploy": "git push heroku master",
     "open": "open https://fire-notes.herokuapp.com"
   },
