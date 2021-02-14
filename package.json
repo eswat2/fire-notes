@@ -1,6 +1,6 @@
 {
   "name": "fire-notes",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "a simple websocket based notes server...",
   "main": "app.js",
   "scripts": {
