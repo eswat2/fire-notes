@@ -37,7 +37,7 @@
     "mem": "8.0.0",
     "mongoose": "5.11.19",
     "request": "2.88.2",
-    "ws": "7.4.3"
+    "ws": "7.4.4"
   },
   "repository": {
     "type": "git",
