@@ -91,9 +91,9 @@
     globals "^11.1.0"
 
 "@babel/types@^7.12.13", "@babel/types@^7.13.0", "@babel/types@^7.13.13", "@babel/types@^7.7.0":
-  version "7.13.13"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.13.13.tgz#dcd8b815b38f537a3697ce84c8e3cc62197df96f"
-  integrity sha512-kt+EpC6qDfIaqlP+DIbIJOclYy/A1YXs9dAf/ljbi+39Bcbc073H6jKVpXEr/EoIh5anGn5xq/yRVzKl+uIc9w==
+  version "7.13.14"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.13.14.tgz#c35a4abb15c7cd45a2746d78ab328e362cbace0d"
+  integrity sha512-A2aa3QTkWoyqsZZFl56MLUsfmh7O0gN41IPvXAE/++8ojpbz12SszD7JEGYVdn4f9Kt4amIei07swF1h4AqmmQ==
   dependencies:
     "@babel/helper-validator-identifier" "^7.12.11"
     lodash "^4.17.19"
@@ -148,17 +148,17 @@
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
 "@types/mongodb@^3.5.27":
-  version "3.6.10"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.6.10.tgz#80cceaabeec9f460e5b46844e938e8eba74f9266"
-  integrity sha512-BkwAHFiZSSWdTIqbUVGmgvIsiXXjqAketeK7Izy7oSs6G3N8Bn993tK9eq6QEovQDx6OQ2FGP2KWDDxBzdlJ6Q==
+  version "3.6.11"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.6.11.tgz#918ecc4cbe6fa15d26c4fe12c00cf0d4c3cf421d"
+  integrity sha512-j0WPV+MQArOYULfCcBALomTXsDMt3iQl8dHa99jrf4U9ENgTQC3LKJbeXYL7TiClofzFOwwICkxEdlB5XhihGw==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
 "@types/node@*":
-  version "14.14.36"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.36.tgz#5637905dbb15c30a33a3c65b9ef7c20e3c85ebad"
-  integrity sha512-kjivUwDJfIjngzbhooRnOLhGYz6oRFi+L+EpMjxroDYXwDw9lHrJJ43E+dJ6KAd3V3WxWAJ/qZE9XKYHhjPOFQ==
+  version "14.14.37"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.37.tgz#a3dd8da4eb84a996c36e331df98d82abd76b516e"
+  integrity sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
 
 accepts@~1.3.7:
   version "1.3.7"
@@ -193,10 +193,10 @@ ajv@^6.10.0, ajv@^6.12.3, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^7.0.2:
-  version "7.2.4"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.2.4.tgz#8e239d4d56cf884bccca8cca362f508446dc160f"
-  integrity sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==
+ajv@^8.0.1:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.0.2.tgz#1396e27f208ed56dd5638ab5a251edeb1c91d402"
+  integrity sha512-V0HGxJd0PiDF0ecHYIesTOqfd1gJguwQUOYfMfAWnRsWQEXfc5ifbUFhD3Wjc+O+y7VAqL+g07prq9gHQ/JOZQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -700,9 +700,9 @@ core-js@^2.4.0, core-js@^2.5.0:
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.2.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.9.1.tgz#cec8de593db8eb2a85ffb0dbdeb312cb6e5460ae"
-  integrity sha512-gSjRvzkxQc1zjM/5paAmL4idJBFzuJoo+jDjF1tStYFMV2ERfD02HhahhCGXUyHxQRG4yFKVSdO6g62eoRMcDg==
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.0.tgz#9a020547c8b6879f929306949e31496bbe2ae9b3"
+  integrity sha512-MQx/7TLgmmDVamSyfE+O+5BHvG1aUGj/gHhLn1wVtm2B5u1eVIPvh7vkfjwWKNCjrTJB8+He99IntSQ1qP+vYQ==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -1880,10 +1880,20 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
+lodash.flatten@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
+  integrity sha1-8xwiIlqWMtK7+OSt2+8kCqdlph8=
 
 lodash.isempty@^4.4.0:
   version "4.4.0"
@@ -1900,12 +1910,17 @@ lodash.kebabcase@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
   integrity sha1-hImxyw0p/4gZXM7KRI/21swpXDY=
 
+lodash.truncate@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
+  integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
+
 lodash.unionwith@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.unionwith/-/lodash.unionwith-4.6.0.tgz#74d140b5ca8146e6c643c3724f5152538d9ac1f0"
   integrity sha1-dNFAtcqBRubGQ8NyT1FSU42awfA=
 
-lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4:
+lodash@^4.17.19, lodash@^4.17.21, lodash@^4.17.4:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -2063,10 +2078,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@5.12.2:
-  version "5.12.2"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.2.tgz#3274630dfb9a8e63dbda0c6e7124fd475623c6ff"
-  integrity sha512-kT9t6Nvu9WPsfssn7Gzke446Il8UdMilY7Sa5vALtwoOoNOGtZEVjekZBFwsBFzTWtBA/x5gBmJoYFP+1LeDlg==
+mongoose@5.12.3:
+  version "5.12.3"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.3.tgz#e48b4cfd898bd779f6a776fc0e232bf790ac4c1a"
+  integrity sha512-frsSR9yeldaRpSUeTegXCSB0Tu5UGq8sHuHBuEV31Jk3COyxlKFQPL7UsdMhxPUCmk74FpOYSmNwxhWBEqgzQg==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -2074,7 +2089,7 @@ mongoose@5.12.2:
     mongodb "3.6.5"
     mongoose-legacy-pluralize "1.0.2"
     mpath "0.8.3"
-    mquery "3.2.4"
+    mquery "3.2.5"
     ms "2.1.2"
     regexp-clone "1.0.0"
     safe-buffer "5.2.1"
@@ -2086,10 +2101,10 @@ mpath@0.8.3:
   resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.8.3.tgz#828ac0d187f7f42674839d74921970979abbdd8f"
   integrity sha512-eb9rRvhDltXVNL6Fxd2zM9D4vKBxjVVQNLNijlj7uoXUy19zNDsIif5zR+pWmPCWNKwAtqyo4JveQm4nfD5+eA==
 
-mquery@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/mquery/-/mquery-3.2.4.tgz#9c5c2e285ea6c6f20673f3528973c99ee1aaa1a0"
-  integrity sha512-uOLpp7iRX0BV1Uu6YpsqJ5b42LwYnmu0WeF/f8qgD/On3g0XDaQM6pfn0m6UxO6SM8DioZ9Bk6xxbWIGHm2zHg==
+mquery@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/mquery/-/mquery-3.2.5.tgz#8f2305632e4bb197f68f60c0cffa21aaf4060c51"
+  integrity sha512-VjOKHHgU84wij7IUoZzFRU07IAxd5kWJaDmyUzQlbjHjyoeK5TNeeo8ZsFDtTYnSgpW6n/nMNIHvE3u8Lbrf4A==
   dependencies:
     bluebird "3.5.1"
     debug "3.1.0"
@@ -2948,12 +2963,17 @@ supports-hyperlinks@^2.0.0:
     supports-color "^7.0.0"
 
 table@^6.0.4:
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/table/-/table-6.0.7.tgz#e45897ffbcc1bcf9e8a87bf420f2c9e5a7a52a34"
-  integrity sha512-rxZevLGTUzWna/qBLObOe16kB2RTnnbhciwgPbMMlazz1yZGVEgnZK762xyVdVznhqxrfCeBMmMkgOOaPwjH7g==
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/table/-/table-6.0.9.tgz#790a12bf1e09b87b30e60419bafd6a1fd85536fb"
+  integrity sha512-F3cLs9a3hL1Z7N4+EkSscsel3z55XT950AvB05bwayrNg5T1/gykXtigioTAjbltvbMSJvvhFCbnf6mX+ntnJQ==
   dependencies:
-    ajv "^7.0.2"
-    lodash "^4.17.20"
+    ajv "^8.0.1"
+    is-boolean-object "^1.1.0"
+    is-number-object "^1.0.4"
+    is-string "^1.0.5"
+    lodash.clonedeep "^4.5.0"
+    lodash.flatten "^4.4.0"
+    lodash.truncate "^4.4.2"
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
