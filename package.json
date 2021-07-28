@@ -35,9 +35,9 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "mem": "9.0.1",
-    "mongoose": "5.13.3",
+    "mongoose": "5.13.4",
     "request": "2.88.2",
-    "ws": "7.5.3"
+    "ws": "8.0.0"
   },
   "repository": {
     "type": "git",
