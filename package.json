@@ -27,7 +27,7 @@
     "eslint-find-rules": "3.6.1",
     "eslint-formatter-pretty": "4.1.0",
     "eslint-loader": "4.0.2",
-    "eslint-plugin-import": "2.24.0",
+    "eslint-plugin-import": "2.24.1",
     "eslint-watch": "7.0.0"
   },
   "dependencies": {
