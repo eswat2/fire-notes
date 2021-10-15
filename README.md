@@ -14,10 +14,9 @@ sh demon
 
 ### Features:
 
-- simple notes api built on [**mongoose**](http://mongoosejs.com/)
+- simple notes api built on [**lowdb**](https://github.com/typicode/lowdb)
 - exposed [**ws**](https://github.com/websockets/ws) api
 - exposed REST api that supports CORS
-- notes are persisted to [**mlab**](https://mlab.com/)
 - default response is JSON describing the server api
 
 ### REST

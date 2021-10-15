@@ -2,41 +2,28 @@
   "name": "fire-notes",
   "version": "1.0.86",
   "description": "a simple websocket based notes server...",
-  "main": "app.js",
+  "main": "app.mjs",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "fix": "eslint *.js --fix",
-    "lintr": "esw *.js --color",
-    "watch": "npm run lintr -- --watch",
-    "report": "eslint *.js -f html > eslint.html",
+    "start": "node app.mjs",
+    "test": "echo --skip",
+    "spell": "cspell *.{mjs,json}",
+    "cc": "prettier --check *.{mjs,json}",
+    "format": "prettier --write *.{mjs,json}",
     "predeploy": "yarn version --patch",
     "deploy": "git push heroku master",
     "open": "open https://fire-notes.herokuapp.com"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ]
-  },
   "author": "Richard Hess eswat2@gmail.com (https://about.me/richardhess)",
-  "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-eslint": "10.1.0",
-    "eslint": "8.0.1",
-    "eslint-find-rules": "3.6.1",
-    "eslint-formatter-pretty": "4.1.0",
-    "eslint-loader": "4.0.2",
-    "eslint-plugin-import": "2.25.2",
-    "eslint-watch": "7.0.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "4.17.1",
+    "lowdb": "3.0.0",
     "mem": "9.0.1",
-    "mongoose": "6.0.11",
+    "path": "^0.12.7",
     "request": "2.88.2",
+    "url": "^0.11.0",
     "ws": "8.2.3"
   },
   "repository": {
