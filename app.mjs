@@ -95,7 +95,7 @@ wss.on("connection", (ws) => {
               )
             })
             // NOTE:  if this is a new note, update the clients...
-            if (object.values.length === 1) {
+            if (note.values.length === 1) {
               notes.keys((err2, keys) => {
                 if (!err2) {
                   wss.clients.forEach((client) => {
@@ -149,15 +149,11 @@ const updateClients = (note) => {
       })
     )
   })
-  console.log('-- updateClients', note)
   // NOTE:  if this is a new object, update the clients...
   if (note.values.length === 1) {
-    console.log('-- need keys')
     notes.keys((err2, keys) => {
-      console.log('-- updateKeys', keys)
       if (!err2) {
         wss.clients.forEach((client) => {
-          console.log('-- send', keys)
           client.send(JSON.stringify({ type: "KEYS", keys: keys }))
         })
       }
