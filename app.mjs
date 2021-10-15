@@ -59,14 +59,14 @@ wss.on("connection", (ws) => {
       const user = obj.id ? obj.id.toLowerCase() : null
       console.log("-- wss: " + obj.type + " " + user)
       if (obj.type === "GET") {
-        notes.get(user, (err, object) => {
+        notes.get(user, (err, note) => {
           if (!err) {
-            if (object) {
+            if (note) {
               ws.send(
                 JSON.stringify({
                   type: "DATA",
-                  id: object.user,
-                  values: object.values,
+                  id: note.id,
+                  values: note.values,
                 })
               )
             } else {
@@ -83,18 +83,18 @@ wss.on("connection", (ws) => {
         })
       }
       if (obj.type === "POST") {
-        notes.post(user, obj.value, (err, object) => {
+        notes.post(user, obj.value, (err, note) => {
           if (!err) {
             wss.clients.forEach((client) => {
               client.send(
                 JSON.stringify({
                   type: "DATA",
-                  id: object.user,
-                  values: object.values,
+                  id: note.id,
+                  values: note.values,
                 })
               )
             })
-            // NOTE:  if this is a new object, update the clients...
+            // NOTE:  if this is a new note, update the clients...
             if (object.values.length === 1) {
               notes.keys((err2, keys) => {
                 if (!err2) {
@@ -126,10 +126,10 @@ app.get("/keys", (req, res) => {
 app.get("/notes/:username", (req, res) => {
   const user = req.params.username.toLowerCase()
   if (user) {
-    notes.get(user, (err, object) => {
+    notes.get(user, (err, note) => {
       if (!err) {
-        if (object) {
-          res.json(object)
+        if (note) {
+          res.json(note)
         } else {
           res.json({ id: user, values: [] })
         }
@@ -138,33 +138,44 @@ app.get("/notes/:username", (req, res) => {
   }
 })
 
+const updateClients = (note) => {
+  // NOTE:  push the update to the websocket clients before responding...
+  wss.clients.forEach((client) => {
+    client.send(
+      JSON.stringify({
+        type: "DATA",
+        id: note.id,
+        values: note.values,
+      })
+    )
+  })
+  // NOTE:  if this is a new object, update the clients...
+  if (note.values.length === 1) {
+    notes.keys((err2, keys) => {
+      if (!err2) {
+        wss.clients.forEach((client) => {
+          client.send(JSON.stringify({ type: "KEYS", keys: keys }))
+        })
+      }
+    })
+  }
+}
+
 app.post("/notes", (req, res) => {
   const user = req.body.id.toLowerCase()
   const value = req.body.value
-  notes.post(user, value, (err, object) => {
+  notes.post(user, value, (err, note) => {
     if (!err) {
-      // NOTE:  push the update to the websocket clients before responding...
-      wss.clients.forEach((client) => {
-        client.send(
-          JSON.stringify({
-            type: "DATA",
-            id: object.user,
-            values: object.values,
-          })
-        )
-      })
-      // NOTE:  if this is a new object, update the clients...
-      if (object.values.length === 1) {
-        notes.keys((err2, keys) => {
-          if (!err2) {
-            wss.clients.forEach((client) => {
-              client.send(JSON.stringify({ type: "KEYS", keys: keys }))
-            })
-          }
-        })
-      }
-      res.json(object)
+      updateClients(note)
+      res.json(note)
     }
+  })
+})
+
+app.post("/reset", (req, res) => {
+  notes.reset((err, note) => {
+    updateClients(note)
+    res.json(note)
   })
 })
 

@@ -7,14 +7,23 @@ const connectDB = async () => {
   db = new Low(adapter)
   await db.read()
 
-  console.log("-- data", db.data)
+  // console.log("-- data", db.data)
+}
+
+const resetDB = async (callback) => {
+  const note = { id: "eswat2", values: ["awesome"] }
+  db.data = { notes: [note] }
+  await db.write()
+
+  // console.log("-- data", db.data)
+  callback(null, note)
 }
 
 const getKeys = (callback) => {
   const { notes } = db.data
   const keys = notes
     .map((item) => {
-      return item.user
+      return item.id
     })
     .sort()
   callback(null, keys)
@@ -24,7 +33,7 @@ const getNote = (user, callback) => {
   const { notes } = db.data
   const key = user.toLowerCase()
 
-  const note = notes.find((n) => n.user === key)
+  const note = notes.find((n) => n.id === key)
 
   callback(null, note)
 }
@@ -32,8 +41,8 @@ const getNote = (user, callback) => {
 const validNote = (note, key) => {
   return (
     note &&
-    note.hasOwnProperty("user") &&
-    note.user === key &&
+    note.hasOwnProperty("id") &&
+    note.id === key &&
     note.hasOwnProperty("values") &&
     note.values.length > 0
   )
@@ -52,12 +61,12 @@ const postNote = (user, value, callback) => {
 
         note.values = [...list, value]
       } else {
-        note = { user: key, values: [value] }
+        note = { id: key, values: [value] }
         notes.push(note)
       }
       await db.write()
 
-      console.log("-- post", db.data)
+      // console.log("-- post", db.data)
       callback(null, note)
     } else {
       callback("failed")
@@ -70,6 +79,7 @@ const postNote = (user, value, callback) => {
 //
 const api = {
   connect: connectDB,
+  reset: resetDB,
   keys: getKeys,
   get: getNote,
   post: postNote,
