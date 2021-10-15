@@ -50,9 +50,9 @@ const postNote = (user, value, callback) => {
         note = object
         const list = note.values
 
-        note.values = [...list, ...value]
+        note.values = [...list, value]
       } else {
-        note = { user: key, values: [...value] }
+        note = { user: key, values: [value] }
         notes.push(note)
       }
       await db.write()

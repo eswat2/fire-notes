@@ -140,7 +140,7 @@ app.get("/notes/:username", (req, res) => {
 
 app.post("/notes", (req, res) => {
   const user = req.body.id.toLowerCase()
-  const value = req.body.values
+  const value = req.body.value
   notes.post(user, value, (err, object) => {
     if (!err) {
       // NOTE:  push the update to the websocket clients before responding...
